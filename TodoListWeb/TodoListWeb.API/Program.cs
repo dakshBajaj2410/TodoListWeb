@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TodoListWeb.API.Data;
+using TodoListWeb.API.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ builder.Services.AddDbContext<TodoListDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("TodoList"));
 });
+builder.Services.AddScoped<ITodoListRepository, TodoListRepository>();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 var app = builder.Build();
 
