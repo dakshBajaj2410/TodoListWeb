@@ -7,10 +7,10 @@ namespace TodoListWeb.API.Repository
         Task<IEnumerable<TodoItems>> GetAllAsync();
 
         Task<TodoItems> GetAsync(Guid id);
-        Task<TodoItems> createAsync(TodoItems todoItem);
-        //Task<TodoItems> deleteAsync(Guid id);
-        //Task<TodoItems> updateAsync(Guid id, TodoItems todoItem)
+        Task<TodoItems> CreateAsync(TodoItems todoItem);
+        Task<TodoItems> DeleteAsync(Guid id);
+        Task<TodoItems> UpdateAsync(Guid id, TodoItems todoItem);
 
 
-    }
+    };
 }

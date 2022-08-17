@@ -13,12 +13,26 @@ namespace TodoListWeb.API.Repository
             this.todoListDBContext = todoListDBContext;
         }
 
-        public async Task<TodoItems> createAsync(TodoItems todoItem)
+        public async Task<TodoItems> CreateAsync(TodoItems todoItem)
         {
             todoItem.Id = Guid.NewGuid();
+            todoItem.Status = "Upcoming";
+            todoItem.CreationDate = DateTime.Now;
             await todoListDBContext.AddAsync(todoItem);
             await todoListDBContext.SaveChangesAsync();
             return todoItem;
+        }
+
+        public async Task<TodoItems> DeleteAsync(Guid id)
+        {
+            var todoListDomain = await todoListDBContext.TodoItems.FindAsync(id);
+            if (todoListDomain == null)
+            {
+                return null;
+            }
+            todoListDBContext.Remove(todoListDomain);
+            await todoListDBContext.SaveChangesAsync();
+            return todoListDomain;
         }
 
         public async Task<IEnumerable<TodoItems>> GetAllAsync()
@@ -36,6 +50,18 @@ namespace TodoListWeb.API.Repository
             return TodoListItem;
         }
 
+        public async Task<TodoItems> UpdateAsync(Guid id, TodoItems todoItem)
+        {
+            var ExistingTodoListItem = await todoListDBContext.TodoItems.FindAsync(id);
+            if (ExistingTodoListItem == null)
+            {
+                return null;
+            }
 
+            ExistingTodoListItem.Description = todoItem.Description;
+            ExistingTodoListItem.Status = todoItem.Status;
+            await todoListDBContext.SaveChangesAsync();
+            return ExistingTodoListItem;
+        }
     }
 }
