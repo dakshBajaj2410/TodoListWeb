@@ -17,6 +17,7 @@ namespace TodoListWeb.API.Repository
         {
             todoItem.Id = Guid.NewGuid();
             todoItem.Status = "Upcoming";
+            todoItem.IsChecked = true;
             todoItem.CreationDate = DateTime.Now;
             await todoListDBContext.AddAsync(todoItem);
             await todoListDBContext.SaveChangesAsync();

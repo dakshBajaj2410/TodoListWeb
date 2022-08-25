@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TodoListWeb.API.Data;
 
@@ -11,9 +12,10 @@ using TodoListWeb.API.Data;
 namespace TodoListWeb.API.Migrations
 {
     [DbContext(typeof(TodoListDBContext))]
-    partial class TodoListDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220819074237_isCheckedFieldAdded")]
+    partial class isCheckedFieldAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

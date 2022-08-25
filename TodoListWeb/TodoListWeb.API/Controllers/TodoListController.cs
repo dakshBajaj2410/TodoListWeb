@@ -49,10 +49,10 @@ namespace TodoListWeb.API.Controllers
         {
             //Validators Required
             //Validate the Request
-            if (!ValidateCreateAsync(addTodoListRequest))
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ValidateCreateAsync(addTodoListRequest))
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             var TodoListItemDomain = new Models.Domain.TodoItems();
             TodoListItemDomain.Description = addTodoListRequest.Description;
@@ -83,10 +83,10 @@ namespace TodoListWeb.API.Controllers
         {
 
             //Validation Request
-            if (!ValidateUpdateAsync(updateTodoListRequest))
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ValidateUpdateAsync(updateTodoListRequest))
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
 
             var TodoListItemDomain = new Models.Domain.TodoItems();
